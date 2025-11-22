@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://relics/Relic.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+name = "Speed Boots"
+modifiers = {
+"move_speed": 1.5
+}

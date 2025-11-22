@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape3D" id=2]
+radius = 0.5
+height = 2.0
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource( 1 )
+position = Vector3( 0, 10, 0 )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( 2 )
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseOverlay" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.8 )
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 40
+
+[node name="PlayerSFX" type="AudioStreamPlayer" parent="."]

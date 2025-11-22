@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/asset_offset.gd" id="1_script"]
+
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(1, 1, 1)
+
+[node name="PersistentObject" type="MeshInstance3D"]
+script = ExtResource("1_script")
+mesh = SubResource("1")

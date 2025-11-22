@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://nt1psf6dq2ub"]
+
+[ext_resource type="Environment" uid="uid://b8m8m8m8m8m8" path="res://default_env.tres" id="2"]
+[ext_resource type="PackedScene" path="res://world/WorldGenerator.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cv5yxnjki6oun" path="res://world/Chunk.tscn" id="3_1bvp3"]
+[ext_resource type="PackedScene" path="res://player/Player.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" path="res://ui/HUD.tscn" id="5"]
+[ext_resource type="AudioStream" uid="uid://bo63f6dlnpkhg" path="res://assets/audio/ambient_wind_eerie.ogg" id="6"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="AmbientSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6")
+autoplay = true
+
+[node name="WorldGenerator" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3")]
+chunk_scene = ExtResource("3_1bvp3")
+player = NodePath("../Player")
+
+[node name="HUD" parent="." instance=ExtResource("5")]
+
+[node name="Player" parent="." instance=ExtResource("4_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
